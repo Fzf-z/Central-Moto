@@ -90,10 +90,9 @@ void Luces(){												// Funcion Luces
 }
 
 void Freno(){												// Funcion Freno
+	
 	if(freno_act){
-		for(int i=0; i<255; i++){
-			analogWrite(led_freno, i);
-		}
+		digitalWrite(led_freno, HIGH);
 	}
 }
 
@@ -182,7 +181,6 @@ void loop(){
 	pulsadorLUZ.isClick();
 	pulsadorArranque.isClick();
 	Luces();
-	Freno();
 	Senaleros();
 
 }
