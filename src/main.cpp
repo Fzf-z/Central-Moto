@@ -47,7 +47,7 @@ boolean freno_act = false;
 //==========================================================================================
 //---------------------------------------- Funciones ---------------------------------------
 //==========================================================================================
-boolean Destellador(byte TP){
+boolean Destellador(byte TP){								// Funcion Destellados
 	tP2 = millis();
 	if(tP2 - tP1 > TP){
 		tP1 = tP2;
@@ -56,16 +56,16 @@ boolean Destellador(byte TP){
 	return senalDestellador;
 }
 
-void Senaleros(){
-	if(sena == 1){
+void Senaleros(){											// Funcion Señaleros
+	if(sena == 1){											// Señalero derecho
 	    digitalWrite(led_senD, Destellador(tiempoParpadeo));
 	    digitalWrite(led_senI, LOW); 
 	}
-	if(sena == 2){
+	if(sena == 2){											// Señalero Izquierdo
 	    digitalWrite(led_senI, Destellador(tiempoParpadeo));
 	    digitalWrite(led_senD, LOW); 
 	}
-	if(sena == 3){
+	if(sena == 3){ 											// Baliza 
 	    digitalWrite(led_senD, Destellador(tiempoParpadeo));
 	    digitalWrite(led_senI, Destellador(tiempoParpadeo));
 	}
@@ -76,7 +76,7 @@ void Senaleros(){
 	}
 }
 
-void Luces(){
+void Luces(){												// Funcion Luces
 	if(estadosLuces == HIGH){
 		digitalWrite(Luz, HIGH);
 		analogWrite(led_freno, intencidadLedFreno);
@@ -89,7 +89,7 @@ void Luces(){
 	(estadoLuzAlta) ? digitalWrite(LuzALTA, HIGH) : digitalWrite(LuzALTA, LOW);
 }
 
-void Freno(){
+void Freno(){												// Funcion Freno
 	if(freno_act){
 		for(int i=0; i<255; i++){
 			analogWrite(led_freno, i);
@@ -98,13 +98,12 @@ void Freno(){
 }
 
 // ----------------------------- Boton Arranque -------------------------------------
-void ArranqueStop(){
-	digitalWrite(arranque, LOW);
-}
 void ArranqueStart(){
 	digitalWrite(arranque, HIGH);
 }
-					
+void ArranqueStop(){
+	digitalWrite(arranque, LOW);
+}					
 //-------------------------------- Boton Luces --------------------------------------
 void EnciendeLuces(){
 	estadosLuces == LOW ? estadosLuces = HIGH : estadosLuces = LOW;
@@ -119,9 +118,9 @@ void DestellarLuzAlta(){
 
 //------------------------------ Boton Señalero -------------------------------------
 void SenaleroDerechoEncendido(){
-	sena==1 ? sena=0 : sena=1;			//Operador Ternario
+	sena==1 ? sena=0 : sena=1;	
 }
-void SenaleroIzquieroEncendido(){		//Operador Ternario
+void SenaleroIzquieroEncendido(){
 	sena==2 ? sena=0 : sena=2;
 }
 void SenaleroApagado(){
