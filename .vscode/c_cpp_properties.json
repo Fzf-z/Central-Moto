@@ -6,9 +6,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_Nano/include",
-                "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_Nano/src",
-                "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_Nano/lib/ButtonKing",
+                "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_NanoV1/include",
+                "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_NanoV1/src",
+                "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_NanoV1/lib/ButtonKing",
                 "/home/fzf/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/home/fzf/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                 "/home/fzf/.platformio/lib/AceButton_ID2858/src",
@@ -26,9 +26,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_Nano/include",
-                    "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_Nano/src",
-                    "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_Nano/lib/ButtonKing",
+                    "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_NanoV1/include",
+                    "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_NanoV1/src",
+                    "/home/fzf/Documents/PlatformIO/Projects/Central_Moto_NanoV1/lib/ButtonKing",
                     "/home/fzf/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/home/fzf/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                     "/home/fzf/.platformio/lib/AceButton_ID2858/src",

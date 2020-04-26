@@ -107,8 +107,8 @@ void EncenderLuzAlta(){
 	estadoLuzAlta == LOW ? estadoLuzAlta = HIGH : estadoLuzAlta = LOW;
 }
 void DestellarLuzAlta(){
-	estadoLuzAlta = LOW;
-	digitalWrite(LuzALTA, Destellador(50));
+	//estadoLuzAlta = LOW;
+	digitalWrite(LuzALTA, Destellador(120));
 }
 
 //------------------------------ Boton Señalero -------------------------------------
