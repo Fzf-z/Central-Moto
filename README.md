@@ -1,9 +1,11 @@
 # **PLC-Moto-Arduino Nano**
 ## Una especie de **PLC** para controlar las luces de una moto.
 
-Usando libreria [ButtonKing 1.0.2](https://github.com/TanPitch/ButtonKing/releases/tag/1.0.2)
+
+Usando libreria [AceButton](https://github.com/bxparks/AceButton) 
 
 <img src="https://github.com/Fzf-z/Central-Moto/blob/master/Documentos/IMG_20200412_204718-01.jpeg" width="400">
+
 
 Cuenta con:
 - 6 entradas Logicas Pull UP

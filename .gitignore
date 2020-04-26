@@ -3,4 +3,6 @@
 .gcc-flags.json
 .vscode
 .travis.yml
-test
+EspacioDeTrabajoVSC.code-workspace
+test/
+test/README
