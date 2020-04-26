@@ -59,9 +59,11 @@ boolean Destellador(byte TP){								// Funcion Destellados
 void Senaleros(){											// Funcion Señaleros
 	if(sena == 1){											// Señalero derecho
 	    digitalWrite(led_senD, Destellador(tiempoParpadeo));
+		digitalWrite(led_senI, LOW);
 	}
 	if(sena == 2){											// Señalero Izquierdo
-	    digitalWrite(led_senI, Destellador(tiempoParpadeo)); 
+	    digitalWrite(led_senI, Destellador(tiempoParpadeo));
+		digitalWrite(led_senD, LOW);
 	}
 	if(sena == 3){ 											// Baliza 
 	    digitalWrite(led_senD, Destellador(tiempoParpadeo));
