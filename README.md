@@ -1,7 +1,7 @@
 # **PLC-Moto-Arduino Nano**
 ## Una especie de **PLC** para controlar las luces de una moto.
 
-![Alt text](https://github.com/Fzf-z/Central-Moto/blob/master/Documentos/IMG_20200412_204718-01.jpeg)
+<img src="https://github.com/Fzf-z/Central-Moto/blob/master/Documentos/IMG_20200412_204718-01.jpeg" width="100">
 
 Cuenta con:
 - 6 entradas Logicas Pull UP
