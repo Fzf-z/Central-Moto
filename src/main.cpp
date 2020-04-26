@@ -67,8 +67,7 @@ void Senaleros(){											// Funcion Señaleros
 	    digitalWrite(led_senD, Destellador(tiempoParpadeo));
 	    digitalWrite(led_senI, Destellador(tiempoParpadeo));
 	}
-	else
-	{
+	if (sena == 0){
 		digitalWrite(led_senD, LOW);
 		digitalWrite(led_senI, LOW);
 	}
