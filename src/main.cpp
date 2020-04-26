@@ -41,12 +41,17 @@ AceButton pulsadorTurnL(&turnConfig, PULSADOR_TURN_L_PIN, HIGH);
 boolean signalBlink = LOW;
 long tP1 = 0;
 long tP2 = 0;
-byte sena = 0;
+byte typeTurn = 0;
 
 //Funcion Señaleros
 byte timeBlink = 200;
 
-
+//Function light
+boolean stateLight = LOW;
+byte brightnessBrake = 70;
+boolean stateBream = LOW;
+boolean stateBrake = LOW;
+boolean blinkBream = LOW;
 
 //==========================================================================================
 //---------------------------------------- Funciones ---------------------------------------
@@ -62,7 +67,7 @@ boolean blink(byte TP){								// Funcion Destellados
 }
 
 void turn(){
-	switch (sena){
+	switch (typeTurn){
 		case 0:
 			digitalWrite(TURN_R_OUT_PIN, LOW);
 			digitalWrite(TURN_L_OUT_PIN, LOW);
@@ -71,18 +76,36 @@ void turn(){
 			digitalWrite(TURN_R_OUT_PIN, blink(timeBlink));
 			digitalWrite(TURN_L_OUT_PIN, LOW);
 			break;
-		
 		case 2:
 			digitalWrite(TURN_L_OUT_PIN, blink(timeBlink));
 			digitalWrite(TURN_R_OUT_PIN, LOW);
 			break;
-
 		case 3:
 			digitalWrite(TURN_R_OUT_PIN, blink(timeBlink));
 	    	digitalWrite(TURN_L_OUT_PIN, blink(timeBlink));
 			break;
-		}
+	}
 }
+
+void ligth(){
+	if(stateLight){
+		digitalWrite(LIGHT_OUT_PIN, HIGH);
+		analogWrite(BRAKE_OUT_PIN, brightnessBrake);
+	}
+	else{
+		digitalWrite(LIGHT_OUT_PIN, LOW);
+		digitalWrite(BRAKE_OUT_PIN, LOW);
+		stateBream = LOW;
+	}
+	(stateBream) ? digitalWrite(BREAM_OUT_PIN, HIGH) : digitalWrite(BREAM_OUT_PIN, LOW);
+	if(stateBrake) digitalWrite(BRAKE_OUT_PIN, HIGH);
+	if(blinkBream){
+		stateBream = LOW;
+		digitalWrite(BREAM_OUT_PIN, blink(120));
+	}
+
+}
+
 
 void handleEvent(AceButton* Button, uint8_t eventType, uint8_t /* buttonState */){
 	switch (eventType){	
@@ -100,23 +123,15 @@ void handleEvent(AceButton* Button, uint8_t eventType, uint8_t /* buttonState */
 
 void handleLightEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonState*/){
 	switch (eventType){	
-		case AceButton::kEventPressed:
-			break;
-		case AceButton::kEventReleased:
-			break;
 		case AceButton::kEventClicked:
-			digitalWrite(LIGHT_OUT_PIN, HIGH);
-			analogWrite(BRAKE_OUT_PIN, 70);
+			blinkBream =LOW;
+			!stateBream ? stateBream = HIGH : stateBream = LOW;
 			break;
 		case AceButton::kEventDoubleClicked:
-			digitalWrite(LIGHT_OUT_PIN, LOW);
-			digitalWrite(BRAKE_OUT_PIN, LOW);
+			!stateLight ? stateLight = HIGH : stateLight = LOW;
 			break;
 		case AceButton::kEventLongPressed:
-			digitalWrite(IGNITION_OUT_PIN, HIGH);
-			break;
-		case AceButton::kEventRepeatPressed:
-			digitalWrite(BREAM_OUT_PIN, HIGH);
+			!blinkBream ? blinkBream = HIGH : blinkBream = LOW;
 			break;
 		}
 }
@@ -127,10 +142,10 @@ void handleTurnEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonStat
 			uint8_t pin = button->getPin();
 			switch (pin){
 				case PULSADOR_TURN_R_PIN:
-					sena == 1 ? sena = 0 : sena = 1;
+					typeTurn == 1 ? typeTurn = 0 : typeTurn = 1;
 					break;
 				case PULSADOR_TURN_L_PIN:
-					sena == 2 ? sena = 0 : sena = 2;
+					typeTurn == 2 ? typeTurn = 0 : typeTurn = 2;
 					break;
 			}
 			break;
@@ -141,7 +156,7 @@ void handleTurnEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonStat
 			switch (pin2){
 				case PULSADOR_TURN_R_PIN:
 				case PULSADOR_TURN_L_PIN:
-					sena = 3;
+					typeTurn = 3;
 					break;
 			}
 			break;
@@ -152,11 +167,11 @@ void handleTurnEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonStat
 void handleBrakeEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonState */){
 	switch (eventType){
 		case AceButton::kEventPressed:
-			digitalWrite(BRAKE_OUT_PIN, HIGH);
+			stateBrake = true;
 			break;
 		
 		case AceButton::kEventReleased:
-			digitalWrite(BRAKE_OUT_PIN, LOW);
+			stateBrake = false;
 			break;
 		}
 }
@@ -180,10 +195,7 @@ void setup(){
 	lightConfig.setEventHandler(handleLightEvent);
 	lightConfig.setFeature(ButtonConfig::kFeatureDoubleClick);
 	lightConfig.setFeature(ButtonConfig::kFeatureLongPress);
-	lightConfig.setFeature(ButtonConfig::kFeatureRepeatPress);
-	lightConfig.setFeature(ButtonConfig::kFeatureSuppressAfterDoubleClick);
 	lightConfig.setFeature(ButtonConfig::kFeatureSuppressClickBeforeDoubleClick);
-
 
 	brakeConfig.setEventHandler(handleBrakeEvent);
 
@@ -213,4 +225,5 @@ void loop(){
 	pulsadorTurnL.check();
 	pulsadorBrake.check();
 	turn();
+	ligth();
 }
