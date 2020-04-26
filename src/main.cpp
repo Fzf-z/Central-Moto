@@ -66,6 +66,7 @@ boolean blink(byte TP){								// Funcion Destellados
 	return signalBlink;
 }
 
+
 void turn(){
 	switch (typeTurn){
 		case 0:
