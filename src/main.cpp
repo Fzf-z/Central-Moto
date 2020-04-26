@@ -66,6 +66,7 @@ boolean blink(byte TP){								// Funcion Destellados
 	return signalBlink;
 }
 
+
 void turn(){
 	switch (typeTurn){
 		case 0:
@@ -103,7 +104,6 @@ void ligth(){
 		stateBream = LOW;
 		digitalWrite(BREAM_OUT_PIN, blink(120));
 	}
-
 }
 
 
