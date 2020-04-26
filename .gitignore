@@ -1,4 +1,8 @@
 .pio
 .clang_complete
 .gcc-flags.json
+.vscode
+.travis.yml
 EspacioDeTrabajoVSC.code-workspace
+test/
+test/README
