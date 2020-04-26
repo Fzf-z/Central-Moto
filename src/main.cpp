@@ -28,9 +28,10 @@ const byte IGNITION_OUT_PIN = 3; // Arranque
 
 ButtonConfig turnConfig;
 ButtonConfig brakeConfig;
+ButtonConfig lightConfig;
 
 AceButton pulsadorStart(PULSADOR_START_PIN, HIGH);
-AceButton pulsadorLight(PULSADOR_LIGHT_PIN, HIGH);
+AceButton pulsadorLight(&lightConfig, PULSADOR_LIGHT_PIN, HIGH);
 AceButton pulsadorBrake(&brakeConfig, PULSADOR_BRAKE_PIN, HIGH);
 AceButton pulsadorTurnR(&turnConfig, PULSADOR_TURN_R_PIN, HIGH);
 AceButton pulsadorTurnL(&turnConfig, PULSADOR_TURN_L_PIN, HIGH);
@@ -88,12 +89,38 @@ void handleEvent(AceButton* Button, uint8_t eventType, uint8_t /* buttonState */
 		case AceButton::kEventClicked:
 
 			break;
-
 		case AceButton::kEventPressed:
+
+			break;
+		case AceButton::kEventDoubleClicked:
 
 			break;
 		}
 }
+
+void handleLightEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonState*/){
+	switch (eventType){	
+		case AceButton::kEventPressed:
+			break;
+		case AceButton::kEventReleased:
+			break;
+		case AceButton::kEventClicked:
+			digitalWrite(LIGHT_OUT_PIN, HIGH);
+			analogWrite(BRAKE_OUT_PIN, 70);
+			break;
+		case AceButton::kEventDoubleClicked:
+			digitalWrite(LIGHT_OUT_PIN, LOW);
+			digitalWrite(BRAKE_OUT_PIN, LOW);
+			break;
+		case AceButton::kEventLongPressed:
+			digitalWrite(IGNITION_OUT_PIN, HIGH);
+			break;
+		case AceButton::kEventRepeatPressed:
+			digitalWrite(BREAM_OUT_PIN, HIGH);
+			break;
+		}
+}
+
 void handleTurnEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonState */){
 	switch (eventType){
 		case AceButton::kEventClicked:{
@@ -102,7 +129,6 @@ void handleTurnEvent(AceButton* button, uint8_t eventType, uint8_t /* buttonStat
 				case PULSADOR_TURN_R_PIN:
 					sena == 1 ? sena = 0 : sena = 1;
 					break;
-				
 				case PULSADOR_TURN_L_PIN:
 					sena == 2 ? sena = 0 : sena = 2;
 					break;
@@ -145,10 +171,19 @@ void setup(){
 	buttonConfig->setEventHandler(handleEvent);
 	buttonConfig->setFeature(ButtonConfig::kFeatureClick);
 	buttonConfig->setFeature(ButtonConfig::kFeatureSuppressAfterClick);
+	buttonConfig->setFeature(ButtonConfig::kFeatureDoubleClick);
 
 	turnConfig.setEventHandler(handleTurnEvent);
 	turnConfig.setFeature(ButtonConfig::kFeatureClick);
 	turnConfig.setFeature(ButtonConfig::kFeatureLongPress);
+
+	lightConfig.setEventHandler(handleLightEvent);
+	lightConfig.setFeature(ButtonConfig::kFeatureDoubleClick);
+	lightConfig.setFeature(ButtonConfig::kFeatureLongPress);
+	lightConfig.setFeature(ButtonConfig::kFeatureRepeatPress);
+	lightConfig.setFeature(ButtonConfig::kFeatureSuppressAfterDoubleClick);
+	lightConfig.setFeature(ButtonConfig::kFeatureSuppressClickBeforeDoubleClick);
+
 
 	brakeConfig.setEventHandler(handleBrakeEvent);
 
