@@ -16,5 +16,5 @@ Cuenta con:
 
 - Entradas aisladas con optoacopladores.
 - Salidas con relé para manejar focos alogenos y que no requieran PWM.
-- Soporte para Binary Encoding con 74LS148 [LINK](https://github.com/bxparks/AceButton/blob/develop/docs/binary_encoding/README.md)
+- Soporte para Binary Encoding con 74LS148 [Link](https://github.com/bxparks/AceButton/blob/develop/docs/binary_encoding/README.md)
 - Encendidio automatico de Luces despues arrancar el motor.
