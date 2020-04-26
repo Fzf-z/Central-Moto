@@ -107,7 +107,7 @@ void EncenderLuzAlta(){
 	estadoLuzAlta == LOW ? estadoLuzAlta = HIGH : estadoLuzAlta = LOW;
 }
 void DestellarLuzAlta(){
-	//estadoLuzAlta = LOW;
+	estadoLuzAlta = LOW;
 	digitalWrite(LuzALTA, Destellador(120));
 }
 
