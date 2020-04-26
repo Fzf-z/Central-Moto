@@ -1,11 +1,11 @@
 # **PLC-Moto-Arduino Nano**
 ## Una especie de **PLC** para controlar las luces de una moto.
 
-![alt text](https://github.com/Fzf-z/Central-Moto/blob/master/Documentos/IMG_20200412_204718-01.jpeg "PLC")
+![](https://github.com/Fzf-z/Central-Moto/blob/master/Documentos/IMG_20200412_204718-01.jpeg "PLC" | =250x)
 
 Cuenta con:
 - 6 entradas Logicas Pull UP
-- 6 salidas PWM para 4A (sin disipador)
+- 6 salidas PWM (con Mosfet IRF9540) para 4A (sin disipador)
 - Regulador de voltaje
 
 >Circuito para salida PWM extraido de https://forum.arduino.cc/index.php?topic=451897.0
