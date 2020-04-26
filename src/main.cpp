@@ -67,8 +67,7 @@ void Senaleros(){											// Funcion Señaleros
 	    digitalWrite(led_senD, Destellador(tiempoParpadeo));
 	    digitalWrite(led_senI, Destellador(tiempoParpadeo));
 	}
-	else
-	{
+	if (sena == 0){
 		digitalWrite(led_senD, LOW);
 		digitalWrite(led_senI, LOW);
 	}
@@ -109,7 +108,7 @@ void EncenderLuzAlta(){
 }
 void DestellarLuzAlta(){
 	estadoLuzAlta = LOW;
-	digitalWrite(LuzALTA, Destellador(50));
+	digitalWrite(LuzALTA, Destellador(120));
 }
 
 //------------------------------ Boton Señalero -------------------------------------
