@@ -3,7 +3,7 @@
 
 Usando libreria [AceButton](https://github.com/bxparks/AceButton) 
 
-<img src="https://github.com/Fzf-z/Central-Moto/blob/master/Documentos/IMG_20200412_204718-01.jpeg" width="400">
+<img src="https://github.com/Fzf-z/Central-Moto/blob/Central-AceButton/Documentos/IMG_20200412_204718-01.jpeg" width="400">
 
 Cuenta con:
 - 6 entradas Logicas Pull UP
