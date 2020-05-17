@@ -1,4 +1,4 @@
-# **PLC-Moto-Arduino Nano**
+# **Moto-Unit-Control-Arduino Nano**
 ## Una especie de **PLC** para controlar las luces de una moto.
 
 Usando libreria [ButtonKing 1.0.2](https://github.com/TanPitch/ButtonKing/releases/tag/1.0.2)
